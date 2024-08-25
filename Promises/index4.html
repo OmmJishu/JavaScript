@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Promise APIs + Interview Questions</h1>
+
+    <p>
+
+<strong>1.  Promise.all()</strong>
+        <br><br>
+    -> When we have to make parallel api calls and get the results. Eg. Suppose you have to get 10 userIds Info and want to make 10 parallel api calls and get the results for 10 different users.
+<br><br>
+    -> It is used to handle multiple promises together.
+<br><br>
+    -> Promise.all() takes an array(iterable) of promises as input parameter.  Eg:-
+<br>
+            Promise.all([p1, p2, p3]);
+<br>
+            p1 takes 3 seconds to fullfill
+            p2 takes 1 second
+            p3 takes 2 seconds
+<br><br>
+        Case 1.  Suppose all of them get success, no one failed. Then it will give an array with value of all the promises as [val1, val2, val3] and total time taken is 3 seconds. 
+<br><br>
+        Case 2.  V.V.I  What if any of promises is failed or rejected then promise.all will throw an error immidiately. 
+
+
+<br><br><br>
+<strong>2.  Promise.allSettled([p1,p2,p3])</strong>
+<br><br>
+    -> case 1. If all of them get successful then same result as success in promise.all()
+<br><br>
+    -> Case 2. If any one of promises get rejected then still it wait for all other promise to get settle and then it return result as [va1, error2, val3]   assumed p2 got rejected
+
+
+<br><br><br>
+<strong>3.  Promise.rece([p1,p2,p3])</strong>
+<br><br>
+    -> as soon as any one of promise is First SETTLED (success or fail) it just gave result of that promise or first settled promise INTO (val2) ROUND BRACKET  and all other got stop. 
+<br><br>
+    -> if first settled throws error then result will be   (ERROR)
+<br><br>
+    -> Simply it return result of first settled(success or fail) Promise
+
+
+<br><br><br>
+<strong>4.  Promise.any([p1,p2,p3])</strong>
+<br><br>
+    -> Similar to race but as soon as First RESOLVE it returns the result of first one who got success irrespective of any reject promise previously.
+<br><br>
+    -> If all promise gets failed then error will be agreegate error as list of all errors as [err1, err2, err3]
+<br><br>
+    -> Simply it seeking for first success promise
+
+
+    </p>
+
+    <script src="script4.js"></script>
+</body>
+</html>
